@@ -144,7 +144,7 @@ abstract class AdsSoapClient extends SoapClient {
    *     call
    * @param string $serviceNamespace the namespace of the service
    */
-  protected function __construct($wsdl, array $options, AdsUser $user,
+  public function __construct($wsdl, array $options, AdsUser $user,
       $serviceName, $serviceNamespace) {
     $this->user = $user;
     $this->serviceName = $serviceName;
@@ -212,7 +212,7 @@ abstract class AdsSoapClient extends SoapClient {
           $existingStreamContextOptions);
       }
 
-      $response = parent::__soapCall($function_name, $arguments, $options,
+      $response = parent::__soapCall($function_name, $arguments, $options ?: [],
           $input_headers, $output_headers);
       $this->ProcessResponse($this->lastRequest,
           $this->__getLastResponse(), $function_name);
