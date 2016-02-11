@@ -65,7 +65,7 @@ class AdWordsSoapClient extends AdsSoapClient {
       $one_way = 0) {
     // PHP version < 5.3.3 does not properly append HTTP headers to requests.
 
-    if (version_compare(PHP_VERSION, '5.3.3', '<')) {
+    if (version_compare(PHP_VERSION, '5.3.3', '<') || defined('HHVM_VERSION')) {
       $oAuth2Info = $this->user->GetOAuth2Info();
       $oAuth2Handler = $this->user->GetOAuth2Handler();
       if (!empty($oAuth2Info)) {
